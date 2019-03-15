@@ -27,4 +27,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // hasOne (one to one database relationship)
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function hasRoles(array $roles){
+        foreach ($roles as $role) {
+            if ($this->role->key === $role) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

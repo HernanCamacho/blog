@@ -1,15 +1,15 @@
 @extends('layout')
 
 @section('contenido')
-
-<table>
+<h1>Usuarios</h1>
+<table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Rol</th>
-      <th>Acciones</th>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->role_id}}</td>
+            <td>{{$user->role->name}}</td>
             <td></td>
         </tr>
     @endforeach

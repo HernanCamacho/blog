@@ -21,7 +21,9 @@
         @endif
         @if(auth()->check())
             <a class="{{ activeMenu('mensajes') }}" href="{{ route('mensajes.index') }}">Mensajes</a>
-            <a class="{{ activeMenu('usuarios') }}" href="{{ route('usuarios.index') }}">Mensajes</a>
+            @if(auth()->user()->hasRoles(['admin', 'mod']))
+                <a class="{{ activeMenu('usuarios') }}" href="{{ route('usuarios.index') }}">Usuarios</a>
+            @endif
             <a href="/logout">Cerrar sesión de {{ auth()->user()->name}}</a>
         @endif
         <!-- @if(!(auth()->guest()))
@@ -30,7 +32,9 @@
       </nav>
 
     </header>
-    @yield('contenido')
+    <div class="container">
+        @yield('contenido')
+    </div>
     <footer>Copyrigth &copy; {{date('Y')}}</footer>
   </body>
 </html>

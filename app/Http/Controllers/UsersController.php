@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    function __construct(){
+        $this->middleware(['auth',
+        'roles:admin,mod'
+    ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = App\User::all();
+        $users = \App\User::all();
         return view('users.index', compact('users'));
     }
 
